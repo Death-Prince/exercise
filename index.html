@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: rgb(31, 31, 31);
+            padding: 1rem;
+        }
+
+        .container {
+            width: 100%;
+        }
+
+        .link-container {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        a {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 1rem;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="link-container">
+            <a href="exercise.html" data-category="chest">Chest</a>
+        </div>
+        <div class="link-container">
+            <a href="exercise.html" data-category="biceps">Biceps</a>
+        </div>
+        <div class="link-container">
+            <a href="exercise.html" data-category="triceps">Triceps</a>
+        </div>
+        <div class="link-container">
+            <a href="exercise.html" data-category="shoulders">Shoulders</a>
+        </div>
+        <div class="link-container">
+            <a href="exercise.html" data-category="arms">Arms</a>
+        </div>
+        <div class="link-container">
+            <a href="exercise.html" data-category="forearms">Forearms</a>
+        </div>
+        <div class="link-container">
+            <a href="exercise.html" data-category="back">Back</a>
+        </div>
+        <div class="link-container">
+            <a href="exercise.html" data-category="legs">Legs</a>
+        </div>
+    </div>
+
+    <script>
+        const exercises = [
+            {
+                'category_name': 'chest',
+                'name': 'Bench Press',
+                'image_url': 'https://i.pinimg.com/originals/00/2f/9a/002f9a315be7db7b0f0a79ca81e1f5d5.gif',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE1'
+            },
+            {
+                'category_name': 'chest',
+                'name': 'Incline Bench Press',
+                'image_url': 'https://media.istockphoto.com/id/1366264420/photo/3d-illustration-of-human-anatomy-of-an-ectomorph-body.jpg?s=612x612&w=0&k=20&c=55dZ66XBiZd2lXGIa4sq6CvNMtFZz1EHSdP33WvkqXM=',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE2'
+            },
+            {
+                'category_name': 'chest',
+                'name': 'Chest Fly',
+                'image_url': 'https://www.shutterstock.com/image-photo/body-260nw-32878495.jpg',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE3'
+            },
+
+            {
+                'category_name': 'arms',
+                'name': 'Dumbbell Curl',
+                'image_url': 'https://example.com/images/dumbbell_curl.jpg',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE4'
+            },
+
+            {
+                'category_name': 'arms',
+                'name': 'Tricep Extension',
+                'image_url': 'https://example.com/images/tricep_extension.jpg',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE5'
+            },
+
+            {
+                'category_name': 'forearms',
+                'name': 'Wrist Curl',
+                'image_url': 'https://example.com/images/wrist_curl.jpg',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE6'
+            },
+
+            {
+                'category_name': 'forearms',
+                'name': 'Reverse Wrist Curl',
+                'image_url': 'https://example.com/images/reverse_wrist_curl.jpg',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE7'
+            },
+
+            {
+                'category_name': 'shoulders',
+                'name': 'Shoulder Press',
+                'image_url': 'https://example.com/images/shoulder_press.jpg',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE8'
+            },
+
+            {
+                'category_name': 'shoulders',
+                'name': 'Lateral Raise',
+                'image_url': 'https://example.com/images/lateral_raise.jpg',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE9'
+            },
+
+            {
+                'category_name': 'biceps',
+                'name': 'Hammer Curl',
+                'image_url': 'https://example.com/images/hammer_curl.jpg',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE10'
+            },
+
+            {
+                'category_name': 'biceps',
+                'name': 'Preacher Curl',
+                'image_url': 'https://example.com/images/preacher_curl.jpg',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE11'
+            },
+
+            {
+                'category_name': 'triceps',
+                'name': 'Tricep Dip',
+                'image_url': 'https://example.com/images/tricep_dip.jpg',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE12'
+            },
+
+            {
+                'category_name': 'triceps',
+                'name': 'Close-Grip Bench Press',
+                'image_url': 'https://example.com/images/close_grip_bench_press.jpg',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE13'
+            },
+
+            {
+                'category_name': 'back',
+                'name': 'Deadlift',
+                'image_url': 'https://example.com/images/deadlift.jpg',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE14'
+            },
+
+            {
+                'category_name': 'back',
+                'name': 'Pull-Up',
+                'image_url': 'https://example.com/images/pull_up.jpg',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE15'
+            },
+
+            {
+                'category_name': 'legs',
+                'name': 'Squat',
+                'image_url': 'https://example.com/images/squat.jpg',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE16'
+            },
+
+            {
+                'category_name': 'legs',
+                'name': 'Lunges',
+                'image_url': 'https://example.com/images/lunges.jpg',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE17'
+            },
+
+            {
+                'category_name': 'legs',
+                'name': 'Leg Press',
+                'image_url': 'https://example.com/images/leg_press.jpg',
+                'video_url': 'https://youtube.com/watch?v=EXAMPLE18'
+            }
+        ];
+
+        document.querySelectorAll('.link-container a').forEach(link => {
+            link.addEventListener('click', function (event) {
+                const category = this.dataset.category;
+                const filteredExercises = exercises.filter(exercise => exercise.category_name === category);
+                localStorage.setItem('exercises', JSON.stringify(filteredExercises));
+            });
+        });
+    </script>
+</body>
+
+</html>

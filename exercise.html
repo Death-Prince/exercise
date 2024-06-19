@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section id="exerciseAccordion" class="accordion accordion--radio"></section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const exerciseAccordion = document.getElementById('exerciseAccordion');
+            const exercises = JSON.parse(localStorage.getItem('exercises')) || [];
+
+            exercises.forEach((exercise, index) => {
+                const tab = document.createElement('div');
+                tab.classList.add('tab');
+
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.name = 'accordion-2';
+                input.id = `rd${index + 1}`;
+
+                const label = document.createElement('label');
+                label.setAttribute('for', input.id);
+                label.classList.add('tab__label');
+                label.textContent = exercise.name;
+
+                const content = document.createElement('div');
+                content.classList.add('tab__content');
+                const img = document.createElement('img');
+                img.src = exercise.image_url;
+                img.alt = exercise.name;
+                content.appendChild(img);
+
+                // const img2 = document.createElement('img');
+                // img2.src = exercise.image_url;
+                // img2.alt = exercise.name;
+                // content.appendChild(img2);
+
+                tab.appendChild(input);
+                tab.appendChild(label);
+                tab.appendChild(content);
+
+                exerciseAccordion.appendChild(tab);
+            });
+
+            // Add a close tab at the end
+            const lastTab = document.createElement('div');
+            lastTab.classList.add('tab', 'last-tab');
+            const lastInput = document.createElement('input');
+            lastInput.type = 'radio';
+            lastInput.name = 'accordion-2';
+            lastInput.id = `rd${exercises.length + 1}`;
+            const lastLabel = document.createElement('label');
+            lastLabel.setAttribute('for', lastInput.id);
+            lastLabel.classList.add('tab__close');
+            lastLabel.textContent = 'Close open tab ×';
+
+            lastTab.appendChild(lastInput);
+            lastTab.appendChild(lastLabel);
+            exerciseAccordion.appendChild(lastTab);
+        });
+    </script>
+    <style>
+        :root {
+            --primary: #fff;
+            --secondary: ;
+            --background: rgb(31, 31, 31);
+            --highlight: #ffda79;
+            /* Theme color */
+            --theme: var(--primary);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            place-items: start;
+            gap: 1rem;
+            margin: 0;
+            padding: 1rem;
+            color: var(--primary);
+            background: var(--background);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Core styles/functionality */
+        .tab {
+            color: var(--theme);
+            border: 2px solid;
+            border-radius: 0.5rem;
+            margin-top: 10px;
+        }
+
+        .last-tab {
+            border: none !important;
+        }
+
+        .tab input {
+            position: absolute;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        .tab__content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 1s;
+        }
+
+        .tab input:checked~.tab__content {
+            max-height: 100rem;
+        }
+
+        /* Visual styles */
+        .accordion {
+
+            overflow: hidden;
+        }
+
+        .tab__label,
+        .tab__close {
+            display: flex;
+            color: white;
+            background: var(--theme);
+            cursor: pointer;
+        }
+
+        .tab__label {
+            justify-content: space-between;
+            padding: 1rem;
+        }
+
+        .tab__label::after {
+            content: "\276F";
+            width: 1em;
+            height: 1em;
+            text-align: center;
+            transform: rotate(90deg);
+            transition: all 1s;
+        }
+
+        .tab input:checked+.tab__label::after {
+            transform: rotate(270deg);
+        }
+
+        .tab__content p {
+            margin: 0;
+            padding: 1rem;
+        }
+
+        .tab__close {
+            justify-content: flex-end;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+        }
+
+        .accordion--radio {
+            --theme: var(--secondary);
+        }
+
+        /* Arrow animation */
+        .tab input:not(:checked)+.tab__label:hover::after {
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            25% {
+                transform: rotate(90deg) translate(.25rem);
+            }
+
+            75% {
+                transform: rotate(90deg) translate(-.25rem);
+            }
+        }
+    </style>
+
+</html>
